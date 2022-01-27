@@ -3,22 +3,13 @@ package pricetostring;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Price extends Words {
+public class Price {
 	private long price;
-	private String currencyName;
 	Currency currency;
 
-	public Price(long price, String currencyName) {
+	public Price(long price, Currency currency) {
 		this.price = price;
-		this.currencyName = currencyName;
-	}
-
-	public String getCurrencyName() {
-		return currencyName;
-	}
-
-	public void setCurrencyName(String currencyName) {
-		this.currencyName = currencyName;
+		this.currency = currency;
 	}
 
 	public long getPrice() {
@@ -37,10 +28,10 @@ public class Price extends Words {
 		this.currency = currency;
 	}
 
-	public String changePriceToWords() {
+	public String getPriceToWords() {
 		String result = "";
 		String text = "";
-		String[] currencys = this.getCurrency().chooseCurrencyName(currencyName);
+		String[] currencys = this.currency.getCurrencyName();
 		List<Integer> segments = new ArrayList<>();
 		while (price > 0) {
 			int segment = (int) price % 1000;
@@ -53,27 +44,32 @@ public class Price extends Words {
 			int average = segments.get(i) % 100 / 10;
 			int hi = segments.get(i) / 100;
 			if (average == 0) {
-				text = getHundreds()[hi] + " " + getFrom0till9()[i][low] + " ";
+				text = Words.getHundreds()[hi] + " " + Words.getFrom0till9()[i][low];
 			}
 			else if (average == 1) {
-				text = getHundreds()[hi] + " " + getFrom11till19()[low] + " ";
+				text = Words.getHundreds()[hi] + " " + Words.getFrom10till19()[low];
 			}
 			else {
-				text = getHundreds()[hi] + " " + getTens()[average] + " " + getFrom0till9()[i][low] + " ";
+				text = Words.getHundreds()[hi] + " " + Words.getTens()[average] + " " + Words.getFrom0till9()[i][low];
 			}
 
 			if (i > 0) {
-				text = text + " " + getThousands()[low] + " ";
-			} else {
+				if (average == 1){
+					text = text + " " + Words.getThousands()[0] + " ";
+				}
+				else {
+					text = text + " " + Words.getThousands()[low] + " ";
+				}
+			}
+			else if (i == 0 && average == 1){
+				text = text + " " + currencys[0];
+			}
+			else {
 				text = text + " " + currencys[low];
 			}
-//			results.add(text);
 	result += text;
 		}
-//		for (String s: results) {
-//			result += s;
-//		}
-	return result;
+	return result.trim().replace("  ", " ");
 	}
 
 }

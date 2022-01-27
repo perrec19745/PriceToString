@@ -9,21 +9,18 @@ public class PriceToWords {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Введите сумму: ");
 			long sum = scanner.nextLong();
-			if (sum <= 0 || sum >= 1000000){
-	throw new RuntimeException("Число должно быть в пределах от 1 до 999999");
+			if (sum <= 0 || sum >= 1000000) {
+				throw new RuntimeException("Число должно быть в пределах от 1 до 999999");
 			}
-			Currency currency = new Currency();
-			Price price = new Price(sum, "rub");
-			price.setCurrency(currency);
-			price.setCurrencyName("usd");
-			String result = price.changePriceToWords();
+			Currency currency = new CurrencyRubls();
+			Price price = new Price(sum, currency);
+			String result = price.getPriceToWords();
 			System.out.println(result);
-		}
-		catch (InputMismatchException e){
+		} catch (InputMismatchException e) {
 			System.out.println("Неправильный ввод. Необходимо число");
-		}
-		catch (Exception e){
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-}
+
+ }

@@ -1,34 +1,34 @@
 package pricetostring;
 
 public class Words {
-	private final String[][] from0till9 = {{"", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"},
+	private static final String[][] from0till9 = {{"", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"},
 			{"", "одна", "две", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"}};
-	private final String[] from11till19 = {"", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать",
+	private static final String[] from10till19 = {"десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать",
 			"пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"};
-	private final String[] tens = {"", "десять", "двадцать", "тридцать", "сорок", "пятьдесят",
+	private static final String[] tens = {"", "десять", "двадцать", "тридцать", "сорок", "пятьдесят",
 			"шестьдесят", "семьдесят", "восемьдесят", "девяносто"};
-	private final String[] hundreds = {"", "сто", "двести", "триста", "четыреста", "пятьсот",
+	private static final String[] hundreds = {"", "сто", "двести", "триста", "четыреста", "пятьсот",
 			"шестьсот", "семьсот", "восемьсот", "девятьсот"};
-	private final String[] thousands = {"тысяч", "тысяча", "тысячи", "тысячи", "тысячи",
+	private static final String[] thousands = {"тысяч", "тысяча", "тысячи", "тысячи", "тысячи",
 			"тысяч", "тысяч", "тысяч", "тысяч", "тысяч"};
 
-	public String[][] getFrom0till9() {
-		return from0till9;
-	}
-
-	public String[] getFrom11till19() {
-		return from11till19;
-	}
-
-	public String[] getTens() {
-		return tens;
-	}
-
-	public String[] getHundreds() {
+	public static String[] getHundreds(){
 		return hundreds;
 	}
 
-	public String[] getThousands() {
-		return thousands;
+	public static String[] getThousands() {
+			return thousands;
+	}
+
+	public static String[] getFrom10till19() {
+		return  from10till19;
+	}
+
+	public static String[] getTens() {
+		return  tens;
+	}
+
+	public static String[][] getFrom0till9(){
+		return from0till9;
 	}
 }
