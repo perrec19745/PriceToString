@@ -8,6 +8,12 @@ public class Price {
 	Currency currency;
 
 	public Price(long price, Currency currency) {
+	if (price <= 0 || price > 999999){
+		throw new IllegalArgumentException("price must be > 0 and < 1000000");
+	}
+		if (currency == null){
+			throw new IllegalArgumentException("currency must not be null");
+		}
 		this.price = price;
 		this.currency = currency;
 	}
