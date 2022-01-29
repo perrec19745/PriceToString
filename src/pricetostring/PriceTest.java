@@ -42,6 +42,7 @@ class PriceTest {
 		Currency currency = new CurrencyDollars();
 		Price price = new Price(10001, currency);
 		assertEquals("десять тысяч один доллар", price.getPriceToWords());
+		assertEquals("десять тысяч один доллар", price.getPriceToWords());
 	}
 
 	@Test

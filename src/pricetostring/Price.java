@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Price {
-	private long price;
-	Currency currency;
+	private final long price;
+	private final Currency currency;
 
 	public Price(long price, Currency currency) {
 	if (price <= 0 || price > 999999){
@@ -22,27 +22,22 @@ public class Price {
 		return price;
 	}
 
-	public void setPrice(long price) {
-		this.price = price;
-	}
 
 	public Currency getCurrency() {
 		return currency;
 	}
 
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
-	}
 
 	public String getPriceToWords() {
 		String result = "";
 		String text = "";
 		String[] currencys = this.currency.getCurrencyName();
 		List<Integer> segments = new ArrayList<>();
-		while (price > 0) {
-			int segment = (int) price % 1000;
+	long number = price;
+		while (number > 0) {
+			int segment = (int) number % 1000;
 			segments.add(segment);
-			price = price / 1000;
+			number = number / 1000;
 		}
 
 		for (int i = segments.size() - 1; i >= 0; i--) {
